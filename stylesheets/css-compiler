@@ -1,0 +1,2 @@
+sass-convert main.sass main.scss
+sass main.scss main.css

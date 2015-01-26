@@ -1,0 +1,24 @@
+<form name="myForm">
+    <div class="control-group">
+        <label>Index</label>
+        <input type="text" name="index" ng-model="index" required disabled>
+    </div>
+    <div class="control-group">
+        <label>Name</label>
+        <input type="text" name="name" ng-model="name" required>
+    </div>
+    <div class="control-group">
+        <label>Location</label>
+        <input type="text" name="location" ng-model="location" required>
+    </div>
+ 
+    <br>
+    <button ng-click="resetData()"
+        class="btn">
+        Reset
+    </button>
+    <button ng-click="newData()"
+        class="btn btn-primary">
+        Save
+    </button>
+</form>

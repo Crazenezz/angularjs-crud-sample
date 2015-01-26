@@ -35,17 +35,21 @@ angular.module('single-page', ['ngTasty'])
     
     $scope.newData = function() {
       if (this.index !== undefined && this.name !== undefined && this.location !== undefined) {
-        selected_data = data.filter(function(v) { return v['index'] == index; });
-        if (selected_data === undefined)
-          data.push({ 'index': this.index, 'name': this.name, 'location': this.location });
-        else {
-          for (var i = 0; i < data.length; i++) {
-            if(this.index === data[i].index){
-              data[i].index = this.index;
-              data[i].name = this.name;
-              data[i].location = this.location;
-            }
+      
+        var objFound_bool = false;
+        for (var i = 0; i < data.length; i++) {
+          if(this.index === data[i].index){
+            objFound_bool = true;
+            data[i].index = this.index;
+            data[i].name = this.name;
+            data[i].location = this.location;
           }
+        }
+        
+        if (!objFound_bool) {
+          data.push({ 'index': this.index, 'name': this.name, 'location': this.location });
+          
+          index++;
         }
         
         $scope.resource = {
@@ -59,7 +63,6 @@ angular.module('single-page', ['ngTasty'])
           "sortOrder": "dsc"
         };
         
-        index++;
         this.index = index;
         this.name = undefined;
         this.location = undefined;
